@@ -37,7 +37,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`⚡️[server]: Server is running at https://localhost:${this.port}`);
+            console.log(`⚡️[server]: Server is running at https://front65mas.herokuapp.com/:${this.port}`);
         });
     }
 
