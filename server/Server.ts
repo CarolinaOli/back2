@@ -60,6 +60,19 @@ class Server {
 
 
     }
+    
 }
 
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+use(require("cors")(corsOptions))
+
 export default Server
+
+function use(arg0: any) {
+    throw new Error('Function not implemented.');
+}
