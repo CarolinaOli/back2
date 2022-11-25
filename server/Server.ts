@@ -37,7 +37,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`⚡️[server]: Server is running at https://front65mas.herokuapp.com/:${this.port}`);
+            console.log(`⚡️[server]: Server is running at https://front65mas.herokuapp.com:${this.port}`);
         });
     }
 
@@ -58,21 +58,7 @@ class Server {
         this.app.use('/api/diagnosticos',DiagnosticoRouter)
         this.app.use('/api/', AuthRouter)
 
-
     }
     
-}
-
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
-
-use(require("cors")(corsOptions))
-
-export default Server
-
-function use(arg0: any) {
-    throw new Error('Function not implemented.');
+    
 }
