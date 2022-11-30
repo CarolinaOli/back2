@@ -37,7 +37,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`⚡️[server]: Server is running at https://https://front-ten-lilac.vercel.app:${this.port}`);
+            console.log(`⚡️[server]: Server is running at https://front-ten-lilac.vercel.app:${this.port}`);
         });
     }
 
