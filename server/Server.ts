@@ -26,22 +26,25 @@ class Server {
         const csv = require('csv-express')
         this.port = 8000
         this.app.use(express.json())
-        this.app.use(cors())
+        this.app.use(cors(options))
         this.checkDatabase()
         this.addRoutes()
     }
 
-    async checkDatabase() {
+       async checkDatabase() {
+        this.app.use(cors())
         await db.authenticate()
     }
 
     listen() {
         this.app.listen(this.port, () => {
+            this.app.use(cors())
             console.log(`⚡️[server]: Server is running at https://front-ten-lilac.vercel.app:${this.port}`);
         });
     }
 
     addRoutes() {
+        this.app.use(cors())
         this.app.use('/api/departamentos', DepartamentoRouter)
         this.app.use('/api/avisos_generales', AvisosGeneralesRouter)
         this.app.use('/api/avisos_generales', AvisosGeneralesRouter)
@@ -57,8 +60,20 @@ class Server {
         this.app.use('/api/generos',GeneroRouter)
         this.app.use('/api/diagnosticos',DiagnosticoRouter)
         this.app.use('/api/', AuthRouter)
-
+        this.app.options('*', cors(options))
     }
-    
-    
 }
+
+//options for cors midddleware
+const options: cors.CorsOptions = {
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'X-Access-Token',
+  ],
+  credentials: true,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+};
