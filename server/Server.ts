@@ -26,7 +26,7 @@ class Server {
         const csv = require('csv-express')
         this.port = 8000
         this.app.use(express.json())
-        this.app.use(cors({origin: ['https://front-ten-lilac.vercel.app', 'https://back2-eight.vercel.app']}))
+        this.app.use(cors())
         this.checkDatabase()
         this.addRoutes()
     }
